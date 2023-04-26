@@ -1,39 +1,9 @@
-using System;
+//Make code to introduce the user as just like James Bond.//
 
+Console.WriteLine("What is your first name? ");
+string f_name = Console.ReadLine();
 
-Random randomGenerator = new Random();
-int magicNum = randomGenerator.Next(1, 100);
+Console.WriteLine("What is your last name? ");
+string l_name = Console.ReadLine();
 
-string userWill = "yes";
-while (userWill == "yes")
-{
-    Console.Write("Please enter your guess: ");
-    int userNum = int.Parse(Console.ReadLine());
-
-    int guessNumber = 0;
-
-    while (userNum != magicNum)
-    {
-        if (userNum > magicNum)
-        {
-            Console.WriteLine("Lower");
-        }
-        else if (userNum < magicNum)
-        {
-            Console.WriteLine("Higher");
-        }
-
-        Console.Write("Please enter your guess: ");
-        userNum = int.Parse(Console.ReadLine());
-
-        guessNumber += 1;
-    }
-
-    Console.WriteLine($"You guessed it in {guessNumber} tries.");
-    Console.Write("Would you like to play again?(yes/no) ");
-    userWill = Console.ReadLine().ToLower();
-}
-
-Console.WriteLine("Have a nice day");
-
-//Make sure this structure is here when creating your own project file in C#, we should always have a visable starting point in our program. 
+Console.WriteLine($"Your name is {l_name}, {f_name} {l_name}.");
