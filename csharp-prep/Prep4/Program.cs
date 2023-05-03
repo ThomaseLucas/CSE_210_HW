@@ -51,3 +51,9 @@ using System;
 
     double averageNumber = (double)sumOfNumbers / userNumInput.Count;
     Console.WriteLine($"The average number is: {averageNumber:F2}");
+
+/*
+Cody Bingham
+(208) 431-5137
+bin20016@byui.edu
+*/
