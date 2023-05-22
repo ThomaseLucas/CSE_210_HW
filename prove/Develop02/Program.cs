@@ -91,7 +91,7 @@ class Program
                 //This is where it will save the file into a text document
                 Console.Write("Please enter the name of your file: ");
                 string userFile = Console.ReadLine();
-                string fileName = @"C:\Users\thoma\Desktop\Programming with classes\CSE_210_HW\prove\Develop02\cool.txt";
+                string fileName = userFile;
 
                 using (StreamWriter outputFile = new StreamWriter(fileName))
                 {
