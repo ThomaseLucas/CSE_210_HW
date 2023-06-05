@@ -7,7 +7,7 @@ namespace Develop03
     static void Main(string[] args)
     {
         Reference reference1 = new Reference();
-        Scripture scripture_main = new Scripture(reference1, "For God so loved the world that he gave his only son");
+        Scripture scripture_main = new Scripture(reference1, "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.");
         Word word = new Word();
 
         string reference_format = reference1.FormatReference();
@@ -30,7 +30,6 @@ namespace Develop03
             {
                 Console.Clear();
                 Console.WriteLine(reference_format);
-                Console.WriteLine("New Scripture");
                 string hidden_scripture = scripture_main.HideRandomWords();
                 Console.WriteLine(hidden_scripture);
 

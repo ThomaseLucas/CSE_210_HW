@@ -7,17 +7,15 @@ namespace Develop03
     public class Scripture
     {
         public List<Word> _scripturewords;
-        private List<Word> _hiddenWords;
-        private string _sacredtext = "For God so loved the world that he gave his only son";
+        private string _sacredtext = "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.";
         //change to private ^^
-        private bool[] _hiddenword = {false, false, false, false, false, false, false, false, false, false, false, false};
+        private bool[] _hiddenword = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
         public Reference Reference { get; set; }
 
         public Scripture(Reference reference, string text)
         {
             Reference = reference;
             _scripturewords = new List<Word>();
-            _hiddenWords = new List<Word>();
             LoadScripture(text);
         }
 
@@ -36,66 +34,48 @@ namespace Develop03
             string[] arrayOfWords = text.Split();
             foreach (string word in arrayOfWords)
             {
-                _scripturewords.Add(new Word {_scriptureText = word, _isHidden = false});
-            
+                Word newWord = new Word{_scriptureText = word};
+                _scripturewords.Add(newWord);
+                
             }
         }
 
         public string HideRandomWords()
         {
             Random random = new Random();
-            int numWordsToHide = Math.Min(3, GetTextLength());
-            for (int i = 0; i < numWordsToHide; i++)
+            int numWordsToHide = Math.Min(3, _scripturewords.Count);
+    
+            // Create a list to store the indices of the words to be hidden
+            List<int> hiddenIndices = new List<int>();
+
+            // Randomly select and add unique indices to the hiddenIndices list
+            while (hiddenIndices.Count < numWordsToHide)
             {
-                bool loop = true;
-                while (loop)
+                int randomIndex = random.Next(0, _scripturewords.Count);
+        
+                // Check if the index is already in the hiddenIndices list
+                if (!hiddenIndices.Contains(randomIndex))
                 {
-                    
-                    int random_int = random.Next(0, GetTextLength());
-                    //provides a random integer to take away from the list of words in this loop
-                    string random_word = _scripturewords[random_int]._scriptureText;
-
-                    bool hidden = _hiddenWords[random_int]._isHidden;
-
-                    if (!_hiddenWords[random_int]._isHidden)
-                    //setting hiddenWord to true, changes boolean from false to true
-                    {
-                        _hiddenWords[random_int]._isHidden = true;
-                    }
-                    bool allHidden = true;
-                    //If all of them = true, the loop will exit the program, if not it will break
-                    for (int j = 0; j < GetTextLength(); j++)
-                    {
-                        if (!_hiddenWords[i]._isHidden)
-                        {
-                            allHidden = false;
-                            break;
-                        }
-                        if (allHidden)
-                        {
-                            Environment.Exit(0);
-                        }
-                    }
-
-
-
+                    hiddenIndices.Add(randomIndex);
+                    _hiddenword[randomIndex] = true; // Set the corresponding hidden word flag to true
                 }
             }
+
             string result = " ";
-            for (int i = 0; i < GetTextLength(); i++)
+            for (int i = 0; i < _scripturewords.Count; i++)
             {
-                if (_hiddenWords[i]._isHidden == true)
+                if (_hiddenword[i] == true)
                 {
                     result += "______" + " ";
                 }
                 else
                 {
-                    result += _scripturewords[i] + " ";
+                    result += _scripturewords[i]._scriptureText + " ";
                 }
-
-        
             }
-            return result;    
-        }
+
+            return result;
+        }    
     }
 }
+
