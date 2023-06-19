@@ -1,9 +1,12 @@
 using System;
 
+namespace Learning04
+{
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        Console.WriteLine("Hello Learning04 World!");
+        ;
     }
+}
 }
